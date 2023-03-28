@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+
+<div class="container center">
+    <div class="card">
+        <article class="card-body">
+            <hr>
+            <form th:action="@{/registration}" th:method="post" th:object="${formData}">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input
+                            name="email"
+                            type="email"
+                            th:value="*{email}"
+                            th:errorclass="is-invalid"
+                            placeholder="Email"
+                            class="form-control"
+                            id="email"/>
+
+                    <div class="invalid-feedback">
+                        The user email should be valid and such user should exist in the system!
+                    </div>
+                </div>
+                <!-- form-group// -->
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input
+                            name="password"
+                            type="password"
+                            placeholder="Password"
+                            th:errorclass="is-invalid"
+                            class="form-control"
+                            id="password"/>
+                    <div class="invalid-feedback">
+                        Both password should match!
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="repeatPassword">Repeat Password</label>
+                    <input
+                            name="repeatPassword"
+                            type="password"
+                            placeholder="Repeat password"
+                            th:errorclass="is-invalid"
+                            class="form-control"
+                            id="repeatPassword"/>
+                    <div class="invalid-feedback">
+                        Both password should match!
+                    </div>
+                </div>
+
+                <!-- form-group// -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block">Register</button>
+                        </div> <!-- form-group// -->
+                    </div>
+
+                </div> <!-- .row// -->
+            </form>
+        </article>
+    </div> <!-- card.// -->
+
+
+    <!-- Bootstap JS -->
+    <div th:replace="fragments/bootstrap-js :: bootstrap-js"></div>
+    <!-- EO: Bootstap JS -->
+</div>
+</body>
+</html>
